@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+   
+   <!-- Calculator 클래스로 calculator  객체 생성 -->
+   <bean id="cal" class="com.kmii.test.Calculator"> </bean>
+   
+    <!-- MyCalculator 클래스로 myCalculator  객체 생성 -->
+   <bean id="mycalculator" class="com.kmii.test.Mycalculator">
+   	<property name="a" value="10"></property>
+   	<property name="b" value="5"></property>
+   	<property name="calculator">
+   		<ref bean="cal" />
+   	</property>	
+   </bean>
+   
+   
+   <!--  setter 이용한 객체초기화  -->
+   <bean id="studentDto1" class="com.kmii.test.StudentDto">
+   	<property name="name" value="홍길동"></property>
+   	<property name="age" value="17"></property>
+   	<property name="gradeNum" value="4"></property>
+   	<property name="classNUM" value="5"></property>
+   </bean>
+   
+   
+   <!--  생성자 이용 객체초기화  -->
+   <bean id="studentDto2" class="com.kmii.test.StudentDto">
+   	<constructor-arg>
+   		<value>강감찬</value>
+   	</constructor-arg>
+   	<constructor-arg>
+   		<value>17</value>
+   	</constructor-arg>
+   	<constructor-arg>
+   		<value>6</value>
+   	</constructor-arg>
+   	<constructor-arg>
+   		<value>5</value>
+   	</constructor-arg>
+   </bean>
+   
+   
+   <!--  생성자? -->
+   <bean id="studentInfo1" class="com.kmii.test.StudentInfo">
+   	<constructor-arg>
+   		<ref bean="studentInfo1" />
+   	</constructor-arg>
+   </bean>
+   
+    <bean id="studentInfo2" class="com.kmii.test.StudentInfo">
+   	<constructor-arg>
+   		<ref bean="studentInfo2" />
+   	</constructor-arg>
+   </bean>
+   
+   
+</beans>
